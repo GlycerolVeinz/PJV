@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class testing_input {
     public static void main(String[] args) {
-        System.out.println(Calc.multiply(c,d));
         Scanner scanf = new Scanner(System.in);
         int counter = 0;
         boolean did_a_ten = false;

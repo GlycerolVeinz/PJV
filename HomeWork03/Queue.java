@@ -1,4 +1,4 @@
-package cz.cvut.fel.pjv;
+// package cz.cvut.fel.pjv;
 
 /**
  * A collection representing F-I-F-O type queue with basic operations.

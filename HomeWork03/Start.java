@@ -1,4 +1,4 @@
-package cz.cvut.fel.pjv;
+// package cz.cvut.fel.pjv;
 
 /**
  * @author Jirka Sebek

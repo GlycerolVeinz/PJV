@@ -5,7 +5,7 @@ public class testing_input {
         Scanner scanf = new Scanner(System.in);
         int counter = 0;
         boolean did_a_ten = false;
-        int num = 0;
+        double num = 0;
         String line_s = null;
 
         while (scanf.hasNextLine()) {
@@ -16,7 +16,7 @@ public class testing_input {
             // {
                 
             // }
-            num = Integer.parseInt(line_s);
+            // num = Double.parseDouble(line_s);
             System.out.printf("%d\n", num);
             if ((counter % 10) == 0) {
                 did_a_ten = true;

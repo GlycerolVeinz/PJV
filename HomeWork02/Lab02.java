@@ -1,4 +1,5 @@
-// package cz.cvut.fel.pjv;
+
+package cz.cvut.fel.pjv;
 
 import java.util.Scanner;
 import java.lang.Math;
@@ -11,19 +12,19 @@ public class Lab02 {
 		int num_counter = 0;
 		int line_counter = 0;
 		boolean is_a_ten = false;
-		int nums[] = new int[10];
+		double nums[] = new double[10];
 
 		while (scanf.hasNextLine()) {
 			String line = scanf.nextLine();
 			is_a_ten = false;
 			line_counter++;
 
-			if (!(TextIO.isInteger(line))) {
+			if (!(TextIO.isDouble(line))) {
 				System.out.printf("A number has not been parsed from line %d\n", line_counter);
 				continue;
 			}
 
-			int num = Integer.parseInt(line);
+			double num = Double.parseDouble(line);
 			nums[num_counter++ % 10] = num;
 
 			// print statistics every 10 nums
@@ -37,7 +38,7 @@ public class Lab02 {
 		System.out.println("End of input detected!");
 
 		// print statistics for remaining nums
-		if (!is_a_ten && (num_counter % 10) != 0) {
+		if (!is_a_ten && ((num_counter % 10) != 0)) {
 			double mean = meanCalc(nums, num_counter % 10);
 			double deviation = standartDeviation(nums, num_counter % 10, mean);
 			System.out.printf(" %d %.3f %.3f\n", num_counter % 10, mean, deviation);
@@ -49,7 +50,7 @@ public class Lab02 {
 	/*
 	* Calculates mean for all numbers in interval (0;count) in nums[]
 	*/
-	public double meanCalc(int[] nums, int count) {
+	public double meanCalc(double[] nums, int count) {
 		double mean = 0;
 		for (int i = 0; i < count; ++i) {
 			mean += nums[i];
@@ -57,7 +58,7 @@ public class Lab02 {
 		return (mean / count);
 	}
 
-	public double standartDeviation(int[] nums, int count, double mean) {
+	public double standartDeviation(double[] nums, int count, double mean) {
 		double summ = 0;
 		for (int i = 0; i < count; ++i) {
 			summ += Math.pow((nums[i] - mean), 2);

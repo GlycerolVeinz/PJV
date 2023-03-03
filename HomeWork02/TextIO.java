@@ -1,4 +1,5 @@
-// package cz.cvut.fel.pjv;
+
+package cz.cvut.fel.pjv;
 
 import java.util.Scanner;
 

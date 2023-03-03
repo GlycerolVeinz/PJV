@@ -1,5 +1,5 @@
 
-// package cz.cvut.fel.pjv;
+package cz.cvut.fel.pjv;
 
 public class Start {
 

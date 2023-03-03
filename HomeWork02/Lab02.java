@@ -20,7 +20,7 @@ public class Lab02 {
 			line_counter++;
 
 			if (!(TextIO.isDouble(line))) {
-				System.out.printf("A number has not been parsed from line %d\n", line_counter);
+				System.err.printf("A number has not been parsed from line %d\n", line_counter);
 				continue;
 			}
 
@@ -35,10 +35,10 @@ public class Lab02 {
 				System.out.printf("%d %.3f %.3f\n", 10, mean, deviation);
 			}
 		}
-		System.out.println("End of input detected!");
+		System.err.println("End of input detected!");
 
 		// print statistics for remaining nums
-		if (!is_a_ten && ((num_counter % 10) != 0)) {
+		if (!is_a_ten && ((num_counter % 10) > 1)) {
 			double mean = meanCalc(nums, num_counter % 10);
 			double deviation = standartDeviation(nums, num_counter % 10, mean);
 			System.out.printf(" %d %.3f %.3f\n", num_counter % 10, mean, deviation);

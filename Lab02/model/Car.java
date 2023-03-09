@@ -14,7 +14,7 @@ public class Car {
         this.model = model;
         this.year = year;
         this.vinCode = UUID.randomUUID();
-        this.car_count += 1;
+        Car.car_count += 1;
     }
 
     @Override

@@ -1,4 +1,4 @@
-// package cz.cvut.fel.pjv;
+package cz.cvut.fel.pjv;
 
 /**
  * Implementation of the {@link Queue} backed by fixed size array.
@@ -45,7 +45,7 @@ public class CircularArrayQueue implements Queue {
     @Override
     public boolean isEmpty() {
         boolean ret = true;
-        if ((this.head != -1) || (this.size == 0))
+        if ((this.head != -1) && (this.tail != -1))
             ret = false;
         return ret;
     }
@@ -62,16 +62,18 @@ public class CircularArrayQueue implements Queue {
     public boolean enqueue(String obj) {
         boolean ret = false;
 
-        if ((this.head == -1) || (this.tail == -1) && (size == 0)) {
+        if (this.isEmpty()) {
             this.head = 0;
             this.tail = 0;
             this.queue[this.tail] = obj;
             this.size = 1;
             ret = true;
-        }
-
-        if ((this.size != 0) && !(this.isFull())) {
-            this.tail = (this.tail + 1) % this.capacity;
+        } else if (!(this.isEmpty()) && !(this.isFull())) {
+            int next = (this.tail + 1) % this.capacity;
+            if (next == this.head){ // prevents overwriting
+                return ret;
+            }
+            this.tail = next;
             this.queue[this.tail] = obj;
             this.size += 1;
             ret = true;
@@ -83,14 +85,18 @@ public class CircularArrayQueue implements Queue {
     @Override
     public String dequeue() {
         String ret = null;
+
         if (this.isEmpty()) {
             ret = null;
         } else {
             ret = this.queue[this.head];
             this.queue[this.head] = null;
-            this.head = (this.head +1) % this.capacity;
-            if (this.isEmpty()){
-                
+            this.head = (this.head + 1) % this.capacity;
+            this.size -= 1;
+
+            if (this.size == 0) {
+                this.head = -1;
+                this.tail = -1;
             }
         }
 
@@ -99,6 +105,14 @@ public class CircularArrayQueue implements Queue {
 
     @Override
     public void printAllElements() {
+        if (this.isEmpty()) {
+            System.err.println("nothing in here");
+        }
 
+        int counter = this.head;
+        while (counter != this.tail) {
+            System.out.println(this.queue[(counter++) % this.capacity]);
+        }
+        System.out.println(this.queue[this.tail]);
     }
 }
